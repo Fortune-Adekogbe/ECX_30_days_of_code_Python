@@ -40,7 +40,7 @@ def count_magic(year):
     assert type(year)==int and year > 0, 'Invalid year entered.'
     yy = int(str(year)[-2:])
     magic_code = ()
-    leap = True if int(year)%4==0 and int(year) not in [1800,1900,2100,2200,2300] else False
+    leap = True if int(year)%4==0 and (year % 100 != 0 or year % 400 == 0) else False
     for i in range(1,13):
         for j in range(1,32):
             if i==2 and leap and j>29:
@@ -69,4 +69,4 @@ def count_magic(year):
         dates.append(d)
     return dates
 
-#print(count_magic(1000))
+print(count_magic(1))
